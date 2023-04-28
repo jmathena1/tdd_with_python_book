@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from lists.models import Item
 
 
@@ -6,6 +7,15 @@ class HomePageTest(TestCase):
     def test_uses_home_template(self):
         response = self.client.get("/")
         self.assertTemplateUsed(response, "home.html")
+
+    def test_displays_all_list_items(self):
+        Item.objects.create(text="itemey 1")
+        Item.objects.create(text="itemey 2")
+
+        response = self.client.get("/")
+
+        self.assertContains(response, "itemey 1")
+        self.assertContains(response, "itemey 2")
 
     def test_can_save_a_POST_request(self):
         self.client.post("/", data={"item_text": "A new list item"})
