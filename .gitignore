@@ -1,4 +1,6 @@
 db.sqlite3
-.venv
+geckodriver.*
+venv
 __pycache__
 *.pyc
+.python-version
