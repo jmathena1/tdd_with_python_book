@@ -2,5 +2,6 @@ db.sqlite3
 geckodriver.*
 venv
 __pycache__
+*.DS_store
 *.pyc
 .python-version
